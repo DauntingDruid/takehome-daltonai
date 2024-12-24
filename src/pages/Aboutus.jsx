@@ -55,7 +55,7 @@ const aboutSections = [
         <NavBar />
         {/* AI Course Finder Section */}
         <div>
-          <div className="flex flex-col w-full items-center absolute justify-center z-40">
+          <div className="flex flex-col w-full items-center absolute justify-center z-30">
             <div className="flex justify-center items-center">
               <button
                 onClick={toggleDropdown}
