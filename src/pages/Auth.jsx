@@ -9,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [passwordsMatch, setPasswordsMatch] = useState(true);
-  const [mobileNumberValid, setMobileNumberValid] = useState(true);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -18,20 +17,13 @@ const Auth = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const confirmPassword = e.target.confirmPassword.value;
-    const contactNumber = e.target.contactNumber.value;
 
     if (password !== confirmPassword) {
       setPasswordsMatch(false);
       return;
     }
 
-    if (contactNumber.length !== 10) {
-      setMobileNumberValid(false);
-      return;
-    }
-
     setPasswordsMatch(true);
-    setMobileNumberValid(true);
     toast.success("Successfully registered!");
     const timer = setTimeout(() => {
       navigate('/register', { state: { fullName, email } });
@@ -196,18 +188,6 @@ const Auth = () => {
               {!passwordsMatch && (
                 <p className="text-red-500 text-sm mb-4">
                   Passwords do not match.
-                </p>
-              )}
-              <input
-                type="text"
-                name="contactNumber"
-                placeholder="Primary Contact Number"
-                className="p-2 mb-4 border border-gray-300 rounded-lg"
-                required
-              />
-              {!mobileNumberValid && (
-                <p className="text-red-500 text-sm mb-4">
-                  Mobile number must be 10 digits.
                 </p>
               )}
               <button
