@@ -24,11 +24,12 @@ const Reg = ({ onVerify }) => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    const fullName = e.target.fullName.value;
+    const firstName = e.target.firstName.value;
+    const lastName = e.target.lastName.value;
     const email = e.target.email.value;
     const contactNumber = e.target.contactNumber.value;
 
-    if (!fullName || !email || !contactNumber) {
+    if (!firstName || !lastName || !email || !contactNumber) {
       alert("Please fill in all required fields.");
       return;
     }
@@ -51,10 +52,11 @@ const Reg = ({ onVerify }) => {
       <form onSubmit={handleRegister} className="mt-6 flex flex-col w-80">
         <input
           type="text"
-          name="fullName"
-          placeholder="Full Name"
+          name="firstName"
+          placeholder="First Name"
           className="p-2 mb-4 border border-black rounded-lg"
-          value={`${firstName} ${lastName}`}
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
           required
         />
         <input
@@ -69,6 +71,7 @@ const Reg = ({ onVerify }) => {
           placeholder="Last Name"
           className="p-2 mb-4 border border-black rounded-lg"
           value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
           required
         />
         <input
@@ -77,6 +80,7 @@ const Reg = ({ onVerify }) => {
           placeholder="Email Address"
           className="p-2 mb-4 border border-black rounded-lg"
           value={emailAddress}
+          onChange={(e) => setEmailAddress(e.target.value)}
           required
         />
         <input

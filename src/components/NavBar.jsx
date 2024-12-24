@@ -1,10 +1,20 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
 import Flag from 'react-world-flags';
+import { BiSolidPlaneAlt } from "react-icons/bi";
+import { FaMoneyBillTransfer } from "react-icons/fa6";
+import { FaHouse } from "react-icons/fa6";
+import { RiBankFill } from "react-icons/ri";
+import gre from '../assets/gre.png'
+import ielts from '../assets/ielts.png'
+import gmat from '../assets/gmat.svg'
+import pte from '../assets/pte.webp'
+import sat from '../assets/sat.png'
+import toefl from '../assets/toefl.svg'
 import { IoDocumentTextSharp } from "react-icons/io5";
 import { IoDocumentsSharp } from "react-icons/io5";
 import { FaPeopleArrows } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(null);
@@ -71,46 +81,109 @@ const Navbar = () => {
 
   // universities dropdown
   const universitiesDropdown = () => {
+    const countries = [
+      { name: "UK", code: "GB" },
+      { name: "USA", code: "US" },
+      { name: "Ireland", code: "IE" },
+      { name: "Canada", code: "CA" },
+      { name: "Germany", code: "DE" },
+      { name: "France", code: "FR" },
+      { name: "Europe", code: "EU" },
+      { name: "Italy", code: "IT" },
+      { name: "Netherlands", code: "NL" },
+      { name: "Spain", code: "ES" },
+      { name: "New Zealand", code: "NZ" },
+    ];
+  
     return (
-      <ul className="absolute bg-white shadow-lg rounded-md mt-1 py-2 w-48">
-        {[
-          "UK",
-          "USA",
-          "Germany",
-          "Canada",
-        ].map((link, i) => (
-          <li key={i}>
-            <a
-              href="#"
-              className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-pink-600"
-            >
-              {link}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div className="absolute bg-white shadow-custom rounded-md mt-6 -left-28 px-4 py-3 w-96" >
+        <p className="w-full text-lg mb-1">Top Universities in</p>
+        <ul className=" grid grid-cols-2  gap-2">
+          
+          {countries.map((country, i) => (
+            <li key={i} className="flex items-center">
+              <Flag code={country.code} className="w-12 h-10 mr-2" />
+              <a
+                href="#"
+                className="block px-4 py-2 text-lg text-gray-700 hover:text-pink-600"
+              >
+                {country.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   };
 
   // our products dropdown
   const ourProductsDropdown = () => {
+    const testPreparation = {
+      title: "Test Preparation",
+      description: "Excel in English & Academics",
+      icons: [
+        { name: "IELTS", color: "bg-red-500", icon: <img src={ielts} alt="ielts" /> },
+        { name: "PTE", color: "bg-red-400", icon: <img src={pte} alt="pte" /> },
+        { name: "TOEFL", color: "bg-blue-500", icon: <img src={toefl} alt="toefl" /> },
+        { name: "GMAT", color: "bg-yellow-500", icon: <img src={gmat} alt="gmat" /> },
+        { name: "GRE", color: "bg-blue-400", icon: <img src={gre} alt="gre" /> },
+        { name: "SAT", color: "bg-blue-600", icon: <img src={sat} alt="sat" /> },
+      ],
+    }
+    const products = [
+      {
+        title: "Accommodation",
+        description: "Find Your Perfect Student Stay",
+        icon: <FaHouse size={34} />,
+      },
+      {
+        title: "Education Loan",
+        description: "Effortless Education Financing",
+        icon: <RiBankFill size={34} />,
+      },
+      {
+        title: "Travel",
+        description: "Exclusive Travel Deals for Students",
+        icon: <BiSolidPlaneAlt size={34} />,
+      },
+      {
+        title: "Fee Transfer",
+        description: "Seamless Transfers for Study Abroad",
+        icon: <FaMoneyBillTransfer size={34} />, 
+      },
+    ];
+  
     return (
-      <ul className="absolute bg-white shadow-lg rounded-md mt-1 py-2 w-48">
-        {[
-          "Test Preparation",
-          "Travel",
-          "Education Loan",
-        ].map((link, i) => (
-          <li key={i}>
-            <a
-              href="#"
-              className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-pink-600"
-            >
-              {link}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div className="absolute flex bg-white shadow-xl rounded-xl mt-6 -left-96 w-[800px] overflow-hidden">
+        <div className="w-1/3 h-full bg-purple-200 p-5 rounded-r-3xl">
+          <h2 className="text-2xl font-semibold text-gray-800">{testPreparation.title}</h2>
+          <p className="ml-1 text-gray-600 my-1">{testPreparation.description}</p>
+          <div style={{ borderTop: "1px solid #888 ", marginLeft: 5, marginRight: 5 }}></div>
+          <div className="grid grid-cols-3 gap-2 mt-4">
+            {testPreparation.icons.map((icon, i) => (
+              <div key={i} className="flex items-center justify-center space-x-2">
+                <div className={`w-16 h-10 rounded-lg overflow-hidden flex justify-center bg-white items-center`}>
+                  {icon.icon}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="w-2/3 grid grid-cols-2 gap-4 p-5">
+          {products.map((product, i) => (
+            <div key={i} className="flex items-center space-x-4">
+              <div className="w-16 h-16 rounded-full flex justify-center items-center">
+                <span className="text-2xl">{product.icon}</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800">{product.title}</h3>
+                <p className="text-sm text-gray-600">{product.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+  
+      </div>
     );
   };
 
