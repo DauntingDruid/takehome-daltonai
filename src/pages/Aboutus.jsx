@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NavBar from '../components/NavBar'
 import { motion } from "framer-motion";
-import StartPage from '../components/StartPage'
+import StartPage from '../components/Startpage'
 
 const aboutSections = [
     {
