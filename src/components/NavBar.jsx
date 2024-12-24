@@ -10,7 +10,7 @@ import { RiBankFill } from "react-icons/ri";
 import gre from '../assets/gre.png'
 import ielts from '../assets/ielts.png'
 import gmat from '../assets/gmat.svg'
-import pte from '../assets/pte.webp'
+import pte from '../assets/PTE.webp'
 import sat from '../assets/sat.png'
 import toefl from '../assets/toefl.svg'
 import { IoDocumentTextSharp } from "react-icons/io5";
